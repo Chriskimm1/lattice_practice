@@ -1,6 +1,6 @@
 type User {
   id: ID!
-  internal_id: String!
+  internal_id: Int!
   email: String!
   name: String!
 }

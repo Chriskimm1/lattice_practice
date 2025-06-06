@@ -1,31 +1,25 @@
-import { Resolver, Query, Mutation, Arg } from 'type-graphql';
+import bcrypt from 'bcryptjs';
 import { User } from '../models/user';
-import { CreateUserInput, LoginInput } from '../types';
-import { AuthService } from '../middleware/auth';
+import { CreateUserInput } from '../types';
 
-@Resolver()
-export class UserResolver {
-  private authService: AuthService;
-
-  constructor() {
-    this.authService = new AuthService();
-  }
-
-  @Mutation(() => User)
-  async createUser(@Arg('data') data: CreateUserInput): Promise<User> {
-    const user = await User.create(data);
-    return user;
-  }
-
-  @Mutation(() => String)
-  async loginUser(@Arg('data') data: LoginInput): Promise<String> {
-    const token = await this.authService.login(data.email, data.password);
-    return token;
-  }
-
-  @Query(() => User, { nullable: true })
-  async getUser(@Arg('id') id: string): Promise<User | null> {
-    const user = await User.findById(id);
-    return user;
-  }
+async function createUser(data: CreateUserInput) {
+  // Hash the password before saving
+  const hashedPassword = await bcrypt.hash(data.password, 12);
+  const user = await User.create({
+    ...data,
+    password: hashedPassword,
+  });
+  return user;
 }
+
+export const resolvers = {
+  Mutation: {
+    createUser: async (_: any, { input }: { input: CreateUserInput }) => {
+      return createUser(input);
+    },
+    // Add other mutations here
+  },
+  // Add Query resolvers here if needed
+};
+
+export { createUser };

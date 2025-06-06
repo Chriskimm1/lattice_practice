@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  backend:
+    build: .
+    container_name: lattice-backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - JWT_SECRET=your_jwt_secret #this should be an ENV var
+      - SESSION_SECRET=your_session_secret #this also should be a ENV var
+    volumes:
+      - .:/app
+    restart: unless-stopped

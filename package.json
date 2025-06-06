@@ -15,7 +15,8 @@
     "jsonwebtoken": "^8.5.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
-    "mongoose": "^6.0.12"
+    "mongoose": "^6.0.12",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "typescript": "^4.5.4",
@@ -24,7 +25,8 @@
     "jest": "^27.4.5",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.7",
-    "@types/bcryptjs": "^2.4.2"
+    "@types/bcryptjs": "^2.4.2",
+    "@types/uuid": "^10.0.0"
   },
   "license": "MIT"
 }
