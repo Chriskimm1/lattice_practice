@@ -1,7 +1,5 @@
-# Lattice Backend
+# Backend
 
-## Overview
-The Lattice Backend is a Node.js application built with TypeScript that implements a GraphQL API for user management. It includes features such as user authorization, session management, and a structured user model.
 
 ## Project Structure
 - **src/**: Contains all the source code for the backend application.
