@@ -52,6 +52,17 @@ yarn start
 ```
 The server will be available at `http://localhost:4000`.
 
+### Running with Docker
+You can run the backend (and optionally MongoDB) using Docker Compose:
+
+1. Make sure Docker is installed and running on your machine.
+2. (Optional) Add a MongoDB service to `docker-compose.yml` if you want to run MongoDB in Docker.
+3. From the `lattice-backend` directory, run:
+   ```sh
+   docker-compose up --build
+   ```
+4. The backend will be available at `http://localhost:4000`.
+
 ### Running Tests
 To run the tests, use:
 ```
